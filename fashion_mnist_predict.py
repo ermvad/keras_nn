@@ -5,20 +5,21 @@ from tensorflow.python.keras import utils
 import numpy
 from PIL import Image
 
-object_to_predict = 3
+object_to_predict = numpy.random.randint(60000)
 
 
 def main():
     (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
 
+    pixels = x_train[object_to_predict]
+
     y_train = utils.to_categorical(y_train, 10)
-    x_train /= 255
+    x_train = x_train / 255
 
     classes = ["t-shirt", "trouser", "pullover", "dress", "coat", "sandal", "shirt", "sneaker", "bag", "ankle boot"]
 
     model = load_model("fashion_model.h5")
 
-    pixels = x_train[object_to_predict]
     image = Image.fromarray(pixels, "L")
 
     prediction = model.predict(numpy.reshape(x_train[object_to_predict], (1, 784)))

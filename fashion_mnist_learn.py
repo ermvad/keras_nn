@@ -1,7 +1,8 @@
 from tensorflow.python.keras.datasets import fashion_mnist
-from tensorflow.python.keras.models import Sequential, load_model
+from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras import utils
+from tensorflow.python.keras.callbacks import TensorBoard
 import numpy
 
 
@@ -21,7 +22,16 @@ def main():
 
     model.compile(loss="categorical_crossentropy", optimizer="SGD", metrics=["accuracy"])
 
-    model.fit(x_train, y_train, batch_size=200, epochs=100, validation_split=0.2, verbose=1, shuffle=True)
+    callback = [TensorBoard(log_dir='logs', histogram_freq=1, write_images=True)]
+
+    model.fit(x_train,
+              y_train,
+              batch_size=200,
+              epochs=100,
+              validation_split=0.2,
+              verbose=1,
+              shuffle=True,
+              callbacks=callback)
 
     model.save("fashion_model.h5")
 
