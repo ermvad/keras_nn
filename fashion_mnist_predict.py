@@ -1,6 +1,5 @@
 from tensorflow.python.keras.datasets import fashion_mnist
-from tensorflow.python.keras.models import Sequential, load_model
-from tensorflow.python.keras.layers import Dense
+from tensorflow.python.keras.models import load_model
 from tensorflow.python.keras import utils
 import numpy
 from PIL import Image
