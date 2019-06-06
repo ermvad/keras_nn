@@ -16,11 +16,10 @@ def main():
     y_test = utils.to_categorical(y_test, 10)
 
     model = Sequential()
-    model.add(Dense(800, input_dim=784, activation="relu"))
-    model.add(Dense(1000, activation="relu"))
+    model.add(Dense(784, input_dim=784, activation="relu"))
     model.add(Dense(10, activation="softmax"))
 
-    model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+    model.compile(loss="categorical_crossentropy", optimizer="SGD", metrics=["accuracy"])
     model.summary()
     callback = [TensorBoard(log_dir='logs', histogram_freq=1, write_images=True)]
 
@@ -28,8 +27,8 @@ def main():
               y_train,
               batch_size=200,
               epochs=100,
-              validation_split=0.2,
               verbose=1,
+              validation_split=0.2,
               callbacks=callback)
 
     model.save("fashion_model.h5")

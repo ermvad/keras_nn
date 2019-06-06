@@ -21,6 +21,9 @@ def main():
 
     image = Image.fromarray(pixels, "L")
 
+    loss, acc = model.evaluate(x_test, y_test, verbose=1)
+    print("Accuracy on test data is", acc*100, "percent")
+
     prediction = model.predict(numpy.reshape(x_train[object_to_predict], (1, 784)))
 
     print("Object",
