@@ -1,6 +1,6 @@
-from tensorflow.python.keras.datasets import fashion_mnist
+from tensorflow.keras.datasets import fashion_mnist
 from tensorflow.python.keras.models import load_model
-from tensorflow.python.keras import utils
+from tensorflow.python.keras.utils.np_utils import to_categorical
 import numpy
 from PIL import Image
 
@@ -12,7 +12,7 @@ def main():
 
     pixels = x_train[object_to_predict]
 
-    y_train = utils.to_categorical(y_train, 10)
+    y_train = to_categorical(y_train, 10)
     x_train = x_train / 255
 
     classes = ["t-shirt", "trouser", "pullover", "dress", "coat", "sandal", "shirt", "sneaker", "bag", "ankle boot"]

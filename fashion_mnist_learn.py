@@ -1,7 +1,7 @@
-from tensorflow.python.keras.datasets import fashion_mnist
+from tensorflow.keras.datasets import fashion_mnist
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import Dense
-from tensorflow.python.keras import utils
+from tensorflow.python.keras.utils.np_utils import to_categorical
 from tensorflow.python.keras.callbacks import TensorBoard
 
 
@@ -12,8 +12,8 @@ def main():
     x_train = x_train / 255
     x_test = x_test.reshape(10000, 784)
     x_test = x_test / 255
-    y_train = utils.to_categorical(y_train, 10)
-    y_test = utils.to_categorical(y_test, 10)
+    y_train = to_categorical(y_train, 10)
+    y_test = to_categorical(y_test, 10)
 
     model = Sequential()
     model.add(Dense(784, input_dim=784, activation="relu"))
