@@ -1,5 +1,5 @@
 from tensorflow.keras.datasets import fashion_mnist
-from tensorflow.python.keras.models import load_model
+from tensorflow.keras.models import load_model
 from tensorflow.python.keras.utils.np_utils import to_categorical
 import numpy
 from PIL import Image

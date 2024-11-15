@@ -1,9 +1,8 @@
 from tensorflow.keras.datasets import fashion_mnist
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Dense
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 from tensorflow.python.keras.utils.np_utils import to_categorical
-from tensorflow.python.keras.callbacks import TensorBoard
-
+from tensorflow.keras.callbacks import TensorBoard
 
 def main():
     (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
